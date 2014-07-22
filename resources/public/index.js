@@ -78,10 +78,13 @@ $(document).ready(function() {
       $.each(trainData, function(index, item) {
         $(".body").append(trainRowTemplate(fixMissingData(item)));
       });
-      $("#data").dataTable();
-      console.log("success");
+      $("#data").dataTable({
+        "lengthChange": false,
+        "pageLength": 5
+      });
     },
     error: function (xhr, ajaxOptions, thrownError) {
+      $("#error").html("<h3>There was problem retireving the train data.  Please try again later</h3>");
       console.log("error");
     }
   });
